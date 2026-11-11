@@ -1,6 +1,8 @@
 import { Link } from "react-router";
+import { useCart } from "../context/CartContext";
 
 function ProductCard({ product }) {
+    const { addToCart } = useCart();
     return (
         <div className="card h-100 border-0 shadow-sm">
 
@@ -57,7 +59,7 @@ function ProductCard({ product }) {
                 <div className="mt-auto flex-column">
 
 
-                    <button className="btn btn-primary w-100">
+                    <button className="btn btn-primary w-100" onClick={() => addToCart(product)}>
                         Ajouter au panier
                         <i className="bi bi-arrow-right ms-1"></i>
                     </button>

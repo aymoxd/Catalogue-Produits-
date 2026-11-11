@@ -1,10 +1,12 @@
 import { useState,useEffect } from "react";
 import { useParams,Link } from "react-router";
 import { getProductById } from "../services/api";
+import { useCart } from "../context/CartContext";
 
 
 function ProductsDetails(){
     const { id } = useParams();
+  const { addToCart } = useCart();
     
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -105,7 +107,7 @@ function ProductsDetails(){
             <strong>Stock:</strong> {product.stock}
           </p>
 
-          <button className="btn btn-primary btn-lg">
+          <button className="btn btn-primary btn-lg" onClick={() => addToCart(product)}>
             <i className="bi bi-cart-plus me-2"></i>
             Add to Cart
           </button>
